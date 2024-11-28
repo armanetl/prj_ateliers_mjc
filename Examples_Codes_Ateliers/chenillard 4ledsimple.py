@@ -2,11 +2,11 @@
 
 
 #Initialisation
-    #import des modules
+#import des modules
 from machine import Pin
 import time
 
-    #initialisation des pins GPIO-0,1,2,3, voir tableau des Pins du Pico
+#initialisation des pins GPIO-0,1,2,3, voir tableau des Pins du Pico
 led_0 = Pin(0, Pin.OUT)
 led_1 = Pin(1, Pin.OUT)
 led_2 = Pin(2, Pin.OUT)
