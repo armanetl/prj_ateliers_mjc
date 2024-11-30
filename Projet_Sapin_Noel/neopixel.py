@@ -197,4 +197,10 @@ class Neopixel:
             self.set_pixel(i, rgb_w)
         time.sleep(self.delay)
 
+    # Clear all pixels // Ajout Lce le 30 Nov 2024
+    def clear(self):
+        for i in range(self.num_leds):
+            self.set_pixel(i, (0,0,0))
+        time.sleep(self.delay)
+
 
