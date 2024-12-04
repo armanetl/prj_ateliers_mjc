@@ -11,14 +11,6 @@ pir_sensor = Pin(16, Pin.IN)
 NUMLED = 30
 leds = Neopixel(NUMLED, 0, 0, "GRB")
 
-# declaration des couleurs (Rouge,Vert,Bleu)
-couleur_rouge = (255,0,0)
-couleur_vert = (0,255,0)
-couleur_bleu = (0,0,255)
-
-# declaration du chenillard (num led, couleur)
-chenillard = [(0,couleur_rouge),(1,couleur_vert),(2,couleur_bleu),(3,couleur_rouge),(4,couleur_vert),(5,couleur_bleu)]
-
 # INITIALISATIONS:
 # ----------------
 
@@ -33,18 +25,14 @@ leds.show()
 # ------------------
 
 while True:
+    time.sleep(1)
     reading = pir_sensor.value()
     print(reading)
     #si quelquechose a ete detecte
     if reading == 1:
-        # on allume tour a tour les leds du sapin selon le chenillard
-        for element in chenillard:   # pour tous les elements de la liste chenillard
-            numero_led = element[0]  # on recupere le numero de la led = premiere valeur
-            couleur_led = element[1] # on recupere la couleur de cette led = seconde valeur
-            # on programme la led
-            leds.set_pixel(numero_led,couleur_led)
-            leds.show()
-            time.sleep(0.1)
+        # on allume toutes les leds du sapin en rouge
+        leds.fill((255,0,0))
+        leds.show()
         time.sleep(1)
     #si rien  n'a ete detecte
     else:
@@ -56,7 +44,5 @@ while True:
     
    
     
-
-
 
 

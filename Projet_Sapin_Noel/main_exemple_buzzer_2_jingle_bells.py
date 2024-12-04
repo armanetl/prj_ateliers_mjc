@@ -47,7 +47,6 @@ while True:
         joue_note(note[0],note[1])
         sleep(0.01) 
 
-
   
    
     
