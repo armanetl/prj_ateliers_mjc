@@ -2,25 +2,32 @@
 
 from machine import Pin, PWM
 from utime import sleep
+from buzzer import Buzzer
 
 from melodies import *  # import melodies.py
 from notes import *     # import notes.py
 
-buzzer = PWM(Pin(20))   # pin where buzzer is connected
+#buz = PWM(Pin(2))   # pin where buzzer is connected
+buz = Buzzer(2)
+buz.stop()
+
 button = Pin(17, Pin.IN, Pin.PULL_UP)  # pin where you may connect a button
 
-track = 6      # choose track here (see the list in melodies.py)
-volume = 2000   # set volume to a value between 0 and 1000
+track = 37      # choose track here (see the list in melodies.py)
+#volume = 2000   # set volume to a value between 0 and 1000
 
 
 # functions to play the melodies
 
 def playtone(frequency):
-    buzzer.duty_u16(volume)
-    buzzer.freq(frequency)
+    #buz.duty_u16(volume)
+    #buz.freq(frequency)
+    buz.set_freq(frequency)
+    buz.start()
 
 def be_quiet():
-    buzzer.duty_u16(0)  # turns sound off
+    #buz.duty_u16(0)  # turns sound off
+    buz.stop()
 
 def duration(tempo, t):
     
