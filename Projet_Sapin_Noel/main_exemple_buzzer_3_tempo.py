@@ -2,7 +2,7 @@ from machine import Pin
 from buzzer import Buzzer
 from time import sleep
 
-tempo = 140
+tempo = 200
 
 # temps des note
 D = 0.25 # double croche
@@ -58,12 +58,21 @@ def joue_note(val_note,time):
     
 #
 jingle = [("mi_3",N), ("mi_3",N), ("mi_3",B),
-         ("mi_3",N), ("mi_3",N), ("mi_3",B),
-         ("mi_3",N), ("sol_3",N), ("do_3",B), ("re_3",N),
-         ("mi_3",N),
-         ("fa_3",N), ("fa_3",N), ("fa_3",B),
-         ("mi_3",N), ("mi_3",N), ("mi_3",B),
-         ("re_3",N), ("re_3",N), ("re_3",B), ("mi_3",N)]
+          ("mi_3",N), ("mi_3",N), ("mi_3",B),
+          ("mi_3",N), ("sol_3",N), ("do_3",N), ("re_3",N),
+          ("mi_3",R),
+          ("fa_3",N), ("fa_3",N), ("fa_3",B),
+          ("mi_3",N), ("mi_3",N), ("mi_3",B),
+          ("re_3",N), ("re_3",N), ("re_3",N), ("mi_3",N),
+          ("re_3",B), ("sol_3",B),
+          ("mi_3",N), ("mi_3",N), ("mi_3",B),
+          ("mi_3",N), ("mi_3",N), ("mi_3",B),
+          ("mi_3",N), ("sol_3",N), ("do_3",N), ("re_3",N),
+          ("mi_3",R),          
+          ("fa_3",N), ("fa_3",N), ("fa_3",B),
+          ("mi_3",N), ("mi_3",N), ("mi_3",B),
+          ("sol_3",N), ("fa_3",N), ("mi_3",N), ("re_3",N),
+          ("do_3",R)]
 
 tetris = [("re_3",N), ("si_2",C), ("do_3",C), ("re_3",N), ("do_3",C), ("si_2",C),
           ("la_2",N_C), ("do_3",C), ("mi_3",N), ("re_3",C), ("do_3",C),
@@ -86,6 +95,7 @@ tetris = [("re_3",N), ("si_2",C), ("do_3",C), ("re_3",N), ("do_3",C), ("si_2",C)
           ("mi_3",N), ("do_3",N), ("re_3",N), ("si_2",N),
           ("la_3",R)]
 
+#notes = jingle
 notes = tetris
 
 for note in notes:
