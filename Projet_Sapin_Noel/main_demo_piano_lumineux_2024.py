@@ -3,7 +3,6 @@ from buzzer import Buzzer
 from neopixel import Neopixel
 from time import sleep
 import time
-import _thread
 
 tempo = 140
 
@@ -15,7 +14,9 @@ N_C = 1.5
 B = 2 # blanche
 R = 4 # ronde
 
-
+# on place les couleurs dans un dictionnaire
+colors = {"noir":(0,0,0),"blanc":(255,255,255),"vert":(0,255,0),"rouge":(255,0,0),"bleu":(0,0,255),
+          "orange":(255,102,0), "jaune":(255,255,0), "violet":(128,0,128)}
 
 # frequence note
 freq_notes = {"do_2":130.81,"do#_2":138.59,
@@ -47,25 +48,28 @@ freq_notes = {"do_2":130.81,"do#_2":138.59,
               "la_5":1760.00,"la#_5":1864.66,
               "si_5":1967.53}
 
+led_notes = {"do_2":(0,"vert"),"do#_2":(0,"bleu"),
+              "re_2":(1,"vert"),"re#_2":(1,"bleu"),
+              "mi_2":(2,"vert"),
+              "fa_2":(3,"vert"),"fa#_2":(3,"bleu"),
+              "sol_2":(4,"vert"),"sol#_2":(4,"bleu"),
+              "la_2":(5,"vert"),"la#_2":(5,"bleu"),
+              "si_2":(6,"vert"),
+              "do_3":(7,"orange"),"do#_3":(7,"rouge"),
+              "re_3":(8,"orange"),"re#_3":(8,"rouge"),
+              "mi_3":(9,"orange"),
+              "fa_3":(10,"orange"),"fa#_3":(10,"rouge"),
+              "sol_3":(11,"orange"),"sol#_3":(11,"rouge"),
+              "la_3":(12,"orange"),"la#_3":(12,"rouge"),
+              "si_3":(13,"orange")}
+
 #
 buz = Buzzer(2)
 buz.stop()
 
-# declaration du detecteur infra rouge
-pir_sensor = Pin(16, Pin.IN)
 # declaration du ruban de leds (Pin 0)
 NUMLED =30 #30
 leds = Neopixel(NUMLED, 0, 0, "GRB")
-
-# on place les couleurs dans un dictionnaire
-colors = {"noir":(0,0,0),"blanc":(255,255,255),"vert":(0,255,0),"rouge":(255,0,0),"bleu":(0,0,255)}
-
-# declaration du chenillard (num led, couleur)
-chenillard = [(0,colors["rouge"]),(1,colors["vert"]),(2,colors["bleu"]),(3,colors["rouge"]),(4,colors["vert"]),(5,colors["bleu"]),
-              (6,colors["rouge"]),(7,colors["vert"]),(8,colors["bleu"]),(9,colors["rouge"]),(10,colors["vert"]),(11,colors["bleu"]),
-              (12,colors["rouge"]),(13,colors["vert"]),(14,colors["bleu"]),(15,colors["rouge"]),(16,colors["vert"]),(17,colors["bleu"]),
-              (18,colors["rouge"]),(19,colors["vert"]),(20,colors["bleu"]),(21,colors["rouge"]),(22,colors["vert"]),(23,colors["bleu"]),
-              (24,colors["rouge"]),(25,colors["vert"]),(26,colors["bleu"]),(27,colors["rouge"]),(28,colors["vert"]),(29,colors["bleu"])]
 
 # on definit la luminosite des leds
 leds.brightness(15)
@@ -77,10 +81,16 @@ leds.show()
 #
 def joue_note(val_note,time):
     global buz
+    a,c = led_notes[val_note]
+    print(a,c)
+    leds.set_pixel(a,colors[c])
+    leds.show()
     buz.set_freq(freq_notes[val_note])
     buz.start()
     sleep((60/tempo)*time)
     buz.stop()
+    leds.set_pixel(a,colors["noir"])
+    leds.show()
     
 #
 jingle = [("mi_3",N), ("mi_3",N), ("mi_3",B),
@@ -99,6 +109,15 @@ jingle = [("mi_3",N), ("mi_3",N), ("mi_3",B),
           ("mi_3",N), ("mi_3",N), ("mi_3",B),
           ("sol_3",N), ("fa_3",N), ("mi_3",N), ("re_3",N),
           ("do_3",R)]
+
+clair_lune = [("fa_3",N), ("fa_3",N), ("fa_3",N), ("sol_3",N),
+              ("la_3",B), ("sol_3",B),
+              ("fa_3",N), ("la_3",N), ("sol_3",N), ("sol_3",N),
+              ("fa_3",R),
+              ("fa_3",N), ("fa_3",N), ("fa_3",N), ("sol_3",N),
+              ("la_3",B), ("sol_3",B),
+              ("fa_3",N), ("la_3",N), ("sol_3",N), ("sol_3",N),
+              ("fa_3",R)]
 
 tetris = [("re_3",N), ("si_2",C), ("do_3",C), ("re_3",N), ("do_3",C), ("si_2",C),
           ("la_2",N_C), ("do_3",C), ("mi_3",N), ("re_3",C), ("do_3",C),
@@ -121,34 +140,13 @@ tetris = [("re_3",N), ("si_2",C), ("do_3",C), ("re_3",N), ("do_3",C), ("si_2",C)
           ("mi_3",N), ("do_3",N), ("re_3",N), ("si_2",N),
           ("la_3",R)]
 
-notes = tetris
-
-def task(n, delay):
-    global chenillard
-    while True:
-        for element in chenillard:   # pour tous les elements de la liste chenillard
-            numero_led = element[0]  # on recupere le numero de la led = premiere valeur
-            couleur_led = element[1] # on recupere la couleur de cette led = seconde valeur
-            # on programme la led
-            leds.set_pixel(numero_led,couleur_led)
-            leds.show()
-            time.sleep(0.1)
-        time.sleep(0.1)
-        # on eteint les leds du sapin
-        leds.clear() # equivalent a: leds.fill((0,0,0))
-        leds.show()
-        time.sleep(0.1)
-        
-_thread.start_new_thread(task, (10, 0.5))
-
+#notes = tetris
+#notes = jingle
+notes = clair_lune
 
 while True:
-    reading = pir_sensor.value()
-    print(reading)
-    if reading == 1:
-        for note in notes:
-            joue_note(note[0],note[1])
-            sleep(0.01)
-    time.sleep(1)
+    for note in notes:
+        joue_note(note[0],note[1])
+        sleep(0.01)
          
          
