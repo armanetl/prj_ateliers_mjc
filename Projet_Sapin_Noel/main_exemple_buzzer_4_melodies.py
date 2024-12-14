@@ -1,4 +1,7 @@
+#=====================================================
+# Main Exemple Buzzer:
 # source : https://github.com/twisst/Music-for-Raspberry-Pi-Pico/tree/main
+#=====================================================
 
 from machine import Pin, PWM
 from utime import sleep
@@ -11,7 +14,7 @@ from notes import *     # import notes.py
 buz = Buzzer(2)
 buz.stop()
 
-button = Pin(17, Pin.IN, Pin.PULL_UP)  # pin where you may connect a button
+button = Pin(15, Pin.IN, Pin.PULL_UP)  # pin where you may connect a button
 
 track = 37      # choose track here (see the list in melodies.py)
 #volume = 2000   # set volume to a value between 0 and 1000

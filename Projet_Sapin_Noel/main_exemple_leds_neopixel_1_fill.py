@@ -1,3 +1,7 @@
+#=====================================================
+# Main Exemple Ruban LEDs Neopixel:
+# - On allume et eteint toutes les leds en meme temps
+#=====================================================
 from neopixel import Neopixel
 import time
 

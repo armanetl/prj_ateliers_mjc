@@ -1,3 +1,8 @@
+#=====================================================
+# Demo:
+# - Alumage des leds du ruban neopixel
+# - Musique des que PIR detecte une presence
+#=====================================================
 from machine import Pin
 from buzzer import Buzzer
 from neopixel import Neopixel

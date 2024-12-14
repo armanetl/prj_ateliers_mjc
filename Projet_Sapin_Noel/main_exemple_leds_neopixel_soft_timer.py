@@ -1,7 +1,7 @@
-##
-## Sample Code to Animate an LED Strip With a Timer
-##
-
+#=====================================================
+# Main Exemple Ruban LEDs Neopixel:
+# - On allume et eteint les leds en utilisant le timer interne du pico
+#=====================================================
 from machine import Pin, Timer
 from utime import sleep
 from neopixel import Neopixel

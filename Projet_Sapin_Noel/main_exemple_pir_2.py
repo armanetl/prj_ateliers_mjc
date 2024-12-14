@@ -1,9 +1,10 @@
+#=====================================================
+# Main Exemple PIR:
+# - Detection d'une presence et allumage du sapin en rouge
+#=====================================================
 from machine import Pin
 from neopixel import Neopixel
 import time
-
-# DECLARATIONS:
-# -------------
 
 # declaration du detecteur infra rouge
 pir_sensor = Pin(16, Pin.IN)
@@ -11,18 +12,12 @@ pir_sensor = Pin(16, Pin.IN)
 NUMLED = 30
 leds = Neopixel(NUMLED, 0, 0, "GRB")
 
-# INITIALISATIONS:
-# ----------------
-
 # on definit la luminosite des leds
 leds.brightness(15)
 # on eteint toute les leds
 leds.clear()
 # on affiche
 leds.show()
-
-# BOUCLE PRINCIPALE:
-# ------------------
 
 while True:
     time.sleep(1)

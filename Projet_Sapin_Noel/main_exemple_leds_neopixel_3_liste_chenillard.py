@@ -1,3 +1,7 @@
+#=====================================================
+# Main Exemple Ruban LEDs Neopixel:
+# - On allume et eteint les leds en utilisant un chenillard
+#=====================================================
 from neopixel import Neopixel
 import time
 

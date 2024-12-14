@@ -1,3 +1,11 @@
+#=====================================================
+# Demo Piano Lumineux:
+# - Joue une musique avec eclairage des touches
+# - 3 musiques dispo:
+#		- au clair de la lune
+#		- jingle bells
+#		- tetris
+#=====================================================
 from machine import Pin
 from buzzer import Buzzer
 from neopixel import Neopixel

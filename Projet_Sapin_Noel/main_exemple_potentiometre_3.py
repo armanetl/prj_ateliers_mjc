@@ -42,10 +42,11 @@ while True:
         old_val_potar = valeur_potar
         # converti la valeur du potentiometre en numero de led
         numero_led = int(get_led_for( valeur_potar ))
-        # affiche le numero de led
+        # affiche toute les leds jusqu'au numero de led
         print(f"led a allumer : {numero_led}")
         leds.clear()
-        leds.set_pixel(numero_led,(128,0,120))
+        for i in range (0,numero_led):
+            leds.set_pixel(i,(128,0,120))
         leds.show()
         
     time.sleep(0.3)

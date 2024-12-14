@@ -1,3 +1,7 @@
+#=====================================================
+# Main Exemple Buzzer:
+# - Chanson jingle bells version avec le tempo
+#=====================================================
 from machine import Pin
 from buzzer import Buzzer
 from time import sleep

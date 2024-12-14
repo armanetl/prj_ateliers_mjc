@@ -1,3 +1,7 @@
+#=====================================================
+# Main Exemple Buzzer:
+# - Chanson jingle bells version simple
+#=====================================================
 from machine import Pin
 from buzzer import Buzzer
 from time import sleep
@@ -12,7 +16,7 @@ freq_notes = {"do":1046,"do_":1109,
               "si":1967}
 
 
-# declaration du buzzer (Pin2, alimentation en 3.3V)
+# declaration du buzzer (Pin2, alimentation en 3.3V pour celui de la MJC)
 buz = Buzzer(2)
 buz.stop()
 

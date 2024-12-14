@@ -1,3 +1,7 @@
+#=====================================================
+# Main Exemple Buzzer:
+# - On apprend a eteindre le buzzer
+#=====================================================
 from machine import Pin
 from buzzer import Buzzer
 import time
