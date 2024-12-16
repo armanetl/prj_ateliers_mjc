@@ -9,7 +9,7 @@ from machine import Pin
 import time
 
 # Declaration
-bouton = Pin(10, Pin.IN, Pin.PULL_UP)
+bouton = Pin(14, Pin.IN, Pin.PULL_UP)
 
 # Variables
 date_dernier_appui = time.ticks_ms()
