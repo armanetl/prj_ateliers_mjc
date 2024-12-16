@@ -63,7 +63,7 @@ for bouton in boutons:
 
 #Eteindre toutes les leds
 for led in leds:
-    led.value(1)
+    led.value(0)
 
 
 # Boucle principale
