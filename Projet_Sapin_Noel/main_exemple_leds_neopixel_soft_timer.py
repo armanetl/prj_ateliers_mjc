@@ -6,9 +6,10 @@ from machine import Pin, Timer
 from utime import sleep
 from neopixel import Neopixel
 
+# declaration du ruban de leds (Pin 0)
+NUMBER_PIXELS = 30
 NEOPIXEL_PIN = 0
-NUMBER_PIXELS = 24
-leds = Neopixel(NUMBER_PIXELS,NEOPIXEL_PIN, 0, "GRB")
+leds = Neopixel(NUMBER_PIXELS, 0, NEOPIXEL_PIN, "GRB")
 
 # on definit la luminosite des leds
 leds.brightness(15)

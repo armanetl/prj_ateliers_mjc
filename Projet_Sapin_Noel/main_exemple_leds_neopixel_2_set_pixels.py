@@ -9,8 +9,9 @@ import time
 # -------------
 
 # declaration du ruban de leds (Pin 0)
-NUMLED = 30
-leds = Neopixel(NUMLED, 0, 0, "GRB")
+NUM_LED = 30
+PIN_NB = 0
+leds = Neopixel(NUM_LED, 0, PIN_NB, "GRB")
 
 # declaration des couleurs (Rouge,Vert,Bleu)
 couleur_rouge = (255,0,0)
@@ -32,19 +33,19 @@ leds.show()
 
 while True:
     # on allume tour a tour les leds du sapin en rouge
-    for i in range (0,NUMLED):
+    for i in range (0,NUM_LED):
         leds.set_pixel(i,couleur_rouge)
         leds.show()
         time.sleep(0.1)
     time.sleep(1)
     # on allume tour a tour  les leds du sapin en vert
-    for i in range (0,NUMLED):
+    for i in range (0,NUM_LED):
         leds.set_pixel(i,couleur_vert)
         leds.show()
         time.sleep(0.1)
     time.sleep(1)
     # on allume tour a tour  les leds du sapin en bleu
-    for i in range (0,NUMLED):
+    for i in range (0,NUM_LED):
         leds.set_pixel(i,couleur_bleu)
         leds.show()
         time.sleep(0.1)
