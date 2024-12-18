@@ -1,41 +1,13 @@
-'''
-melodies = [
-     jingle,
-     Star_Trek_intro,
-     Silent_Night,
-     We_Wish_You_a_Merry_Christmas,
-     Happy_Birthday,
-     Pacman,
-     Theme_A_from_Tetris_Korobeiniki,
-     Super_Mario_Bros_theme_by_Koji_Kondo,
-     The_Legend_of_Zelda_theme,
-     At_Dooms_Gate_E1M1,
-     Vampire_Killer_Castlevania,
-     Star_Wars_theme,
-     Dart_Vader_theme,
-     Nokia_Ringtone,
-     Badinerie_Johann_Sebastian_Bach,
-     La_lettre_a_Elise_Beethoven,
-     La_panthere_rose,
-     Harry_Potter,
-     Keyboard_cat,
-     Game_of_Thrones,
-     Greensleeves,
-     Baby_Elephant_Walk,
-     Take_on_me_Aha,
-     Le_Parrain_theme,
-]
-'''
 from machine import Pin
 from buzzer import Buzzer
 from time import sleep
 
 pinBuzzer = 2
-pinButton = 10
+pinButton = 22
 button = Pin(pinButton, Pin.IN, Pin.PULL_UP)
 
 tempo = 140 # sera redéfini pour chaque mélodie
-#volume = 1000
+#volume = 5
 
 # durée/temps des notes
 T = 0.25/2 # triple croche
