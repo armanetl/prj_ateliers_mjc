@@ -27,6 +27,7 @@ class Servo:
 
 
     def move(self, angle):
+        #print(angle)
         # round to 2 decimal places, so we have a chance of reducing unwanted servo adjustments
         angle = round(angle, 2)
         # do we need to move?
