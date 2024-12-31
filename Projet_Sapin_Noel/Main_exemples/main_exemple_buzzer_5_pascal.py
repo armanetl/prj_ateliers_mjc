@@ -1,3 +1,31 @@
+'''
+melodies = [
+     jingle,
+     Star_Trek_intro,
+     Silent_Night,
+     We_Wish_You_a_Merry_Christmas,
+     Happy_Birthday,
+     Pacman,
+     Theme_A_from_Tetris_Korobeiniki,
+     Super_Mario_Bros_theme_by_Koji_Kondo,
+     The_Legend_of_Zelda_theme,
+     At_Dooms_Gate_E1M1,
+     Vampire_Killer_Castlevania,
+     Star_Wars_theme,
+     Dart_Vader_theme,
+     Nokia_Ringtone,
+     Badinerie_Johann_Sebastian_Bach,
+     La_lettre_a_Elise_Beethoven,
+     La_panthere_rose,
+     Harry_Potter,
+     Keyboard_cat,
+     Game_of_Thrones,
+     Greensleeves,
+     Baby_Elephant_Walk,
+     Take_on_me_Aha,
+     Le_Parrain_theme,
+]
+'''
 from machine import Pin
 from buzzer import Buzzer
 from time import sleep
@@ -7,7 +35,6 @@ pinButton = 22
 button = Pin(pinButton, Pin.IN, Pin.PULL_UP)
 
 tempo = 140 # sera redéfini pour chaque mélodie
-#volume = 5
 
 # durée/temps des notes
 T = 0.25/2 # triple croche
@@ -79,7 +106,6 @@ freq_notes = {"silence":0,
 
 #
 buz = Buzzer(pinBuzzer)
-#buz.set_volume(volume)
 buz.stop()
 
 #
@@ -109,15 +135,24 @@ def joue_melodie(melodie):
     
 #
 jingle = {"titre":"jingle bell",
-          "tempo":140,
+          "tempo":80,
           "notes":
-            [("mi_3",N), ("mi_3",N), ("mi_3",B),
-            ("mi_3",N), ("mi_3",N), ("mi_3",B),
-            ("mi_3",N), ("sol_3",N), ("do_3",B), ("re_3",N),
+           [("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("mi_3",D), ("sol_3",D), ("do_3",D), ("re_3",D),
             ("mi_3",N),
-            ("fa_3",N), ("fa_3",N), ("fa_3",B),
-            ("mi_3",N), ("mi_3",N), ("mi_3",B),
-            ("re_3",N), ("re_3",N), ("re_3",B), ("mi_3",N)]
+            ("fa_3",D), ("fa_3",D), ("fa_3",C),
+            ("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("re_3",D), ("re_3",D), ("re_3",D), ("mi_3",D),
+            ("re_3",C), ("sol_3",C),
+            ("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("mi_3",D), ("sol_3",D), ("do_3",D), ("re_3",D),
+            ("mi_3",N),
+            ("fa_3",D), ("fa_3",D), ("fa_3",C),
+            ("mi_3",D), ("mi_3",D), ("mi_3",C),
+            ("sol_3",D), ("fa_3",D), ("mi_3",D), ("re_3",D),
+            ("do_3",N)]
         }
 
 Star_Trek_intro = {'titre':'Star Trek intro', 'tempo':80,
@@ -197,7 +232,7 @@ melodies = [
 ]
 
 # Si on veut jouer seulement 1 mélodie, décommenter cette ligne :
-# joue_melodie(Nokia_Ringtone)
+joue_melodie(jingle)
 
 idx_melodie = -1
 print(f"attend l'appui sur le bouton Pin{pinButton}")

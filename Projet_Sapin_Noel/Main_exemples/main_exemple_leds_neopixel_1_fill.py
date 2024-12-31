@@ -9,7 +9,7 @@ import time
 # -------------
 
 # declaration du ruban de leds (Pin 0)
-NUM_LED =30
+NUM_LED = 30
 PIN_NB = 0
 leds = Neopixel(NUM_LED, 0, PIN_NB, "GRB")
 
