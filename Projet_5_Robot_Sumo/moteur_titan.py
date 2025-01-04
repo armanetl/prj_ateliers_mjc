@@ -18,9 +18,7 @@ class Moteur:
         self.io_1.value(0)
         self.io_2.value(0)
     
-#================================
-# TEST
-#================================
+
 if __name__ == '__main__':    
     print('test classe Moteur:')
     
