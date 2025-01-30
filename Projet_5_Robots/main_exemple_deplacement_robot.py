@@ -1,26 +1,36 @@
-#from robot_yaboom import RobotYaboom
-#from robot_picogo import RobotPicoGo
-#from robot_titan import RobotTitan
-from robot_goliath import RobotGoliath
-#from robot_phil import RobotPhil
-#from robot_bob import RobotBob
 import time
+
+#r2d2_name = "PicoGo"
+#r2d2_name = "Yaboom"
+#r2d2_name = "Titan"
+#r2d2_name = "Goliath"
+r2d2_name = "Bob"
+#r2d2_name = "Phil"
+
+if (r2d2_name == "PicoGo"):
+    from robot_picogo import RobotPicoGo
+    r2d2 = RobotPicoGo()
+elif (r2d2_name == "Yaboom"):
+    from robot_yaboom import RobotYaboom
+    r2d2 = RobotYaboom()
+elif (r2d2_name == "Titan"):
+    from robot_titan import RobotTitan
+    r2d2 = RobotTitan()
+elif (r2d2_name == "Goliath"):
+    from robot_goliath import RobotGoliath
+    r2d2 = RobotGoliath()
+elif (r2d2_name == "Bob"):
+    from robot_bob import RobotBob
+    r2d2 = RobotBob()
+elif (r2d2_name == "Phil"):
+    from robot_phil import RobotPhil
+    r2d2 = RobotPhil()
 
 def main_exemple_deplacement_robot():
 
-    # declare le robot
-    #r2d2 = RobotYaboom()
-    #vitesse = 70
-    #r2d2 = RobotPicoGo()
-    #vitesse = 70
-    #r2d2 = RobotTitan()
-    #vitesse = 1 
-    r2d2 = RobotGoliath()
-    vitesse = 1
-    #r2d2 = RobotPhil()
-    #vitesse = 1
-    #r2d2 = RobotBob()
-    #vitesse = 1
+    global r2d2
+    
+    vitesse = r2d2.vitesse_moyenne
 
     try:
         # avance pendant 0.5 secondes
@@ -32,7 +42,7 @@ def main_exemple_deplacement_robot():
         time.sleep(0.5)
         
         for loop in range(10):
-            # tourne à droite
+            # tourne à gauche
             r2d2.moteur("droit","avant",vitesse)
             time.sleep(0.2)
             r2d2.moteur("droit","stop",vitesse)

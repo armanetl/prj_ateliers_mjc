@@ -1,12 +1,20 @@
-#from robot_yaboom import RobotYaboom
-#from robot_picogo import RobotPicoGo
-from robot_titan import RobotTitan
-#from robot_goliath import RobotGoliath
-#from robot_phil import RobotPhil
-#from robot_bob import RobotBob
 from ir_rx_nec import NEC_16
 from machine import Pin
 import time
+
+#r2d2_name = "PicoGo"
+r2d2_name = "Yaboom"
+#r2d2_name = "Titan"
+
+if (r2d2_name == "PicoGo"):
+    from robot_picogo import RobotPicoGo
+    r2d2 = RobotPicoGo()
+elif (r2d2_name == "Yaboom"):
+    from robot_yaboom import RobotYaboom
+    r2d2 = RobotYaboom()
+elif (r2d2_name == "Titan"):
+    from robot_titan import RobotTitan
+    r2d2 = RobotTitan()
 
 #Fonctions utiles pour declarer la telecommande 
 def callback(data, addr, ctrl):
@@ -15,49 +23,24 @@ def callback(data, addr, ctrl):
         IR_data = data
         data_received = True
         
-ir = NEC_16(Pin(5, Pin.IN), callback)
 
 #Declaration et initialisation de variables internes
 data_received = False
 IR_data = 0
 
-def main_exemple_telecommande_titan():
+def main_exemple_telecommande():
 
-    # declare le robot
-    #r2d2 = RobotYaboom()
-    #vitesse = 70
-    #r2d2 = RobotPicoGo()
-    #vitesse = 70
-    r2d2 = RobotTitan()
-    vitesse = 1 
-    #r2d2 = RobotGoliath()
-    #vitesse = 1
-    #r2d2 = RobotPhil()
-    #vitesse = 1
-    #r2d2 = RobotBob()
-    #vitesse = 1
-
+    global r2d2
     global data_received,IR_data
 
-    #Definition du code de chaque touche en fonction de la telecommande utilisée
-    '''
-    Touche_0 = 0x19
-    Touche_1 = 0x45
-    Touche_2 = 0x46
-    Touche_3 = 0x47
-    Touche_4 = 0x44
-    Touche_5 = 0x40
-    Touche_6 = 0x43
-    Touche_7 = 0x07
-    Touche_8 = 0x15
-    Touche_9 = 0x09
-    '''
-    Touche_H = 0x18
-    Touche_D = 0x5A
-    Touche_B = 0x52
-    Touche_G = 0x08
-    Touhe_OK = 0x1C
-    
+    vitesse = r2d2.vitesse_moyenne
+    pin_telecommande = r2d2.pin_telecommande
+    Touche_H = r2d2.Code_Touche_Haut
+    Touche_D = r2d2.Code_Touche_Droite
+    Touche_B = r2d2.Code_Touche_Bas
+    Touche_G = r2d2.Code_Touche_Gauche
+
+    ir = NEC_16(Pin(pin_telecommande, Pin.IN), callback)   
 
     try:
         while True:
@@ -109,4 +92,4 @@ def main_exemple_telecommande_titan():
         r2d2.moteur("gauche","stop",1)
 
 if __name__ == '__main__':
-    main_exemple_telecommande_titan()
+    main_exemple_telecommande()

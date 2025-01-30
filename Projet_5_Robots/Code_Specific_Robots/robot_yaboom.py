@@ -3,6 +3,11 @@ from moteur_yaboom import Moteur
 from ultrason_yaboom import Ultrason
 from pico_car_mjc import pico_car
 from pico_car_mjc import ultrasonic
+from neopixel import Neopixel
+from buzzer import Buzzer
+from ssd1306 import SSD1306_I2C
+
+from machine import Pin,I2C
 import time
 
 
@@ -10,10 +15,40 @@ class RobotYaboom(Robot):
     
     def __init__(self):
         self.pico_car = pico_car()
-        self.ultrasonic = ultrasonic()
+        #Moteur
         self.moteur_gauche = Moteur(self.pico_car, 'l')
         self.moteur_droit = Moteur(self.pico_car, 'r')
+        self.vitesse_moyenne = 70
+        #Ultrason
+        self.ultrasonic = ultrasonic()
         self.us_avant = Ultrason(self.ultrasonic)
+        #Buzzer
+        self.pin_buzzer = 22
+        self.volume_moyen = 600
+        self.buzzer = Buzzer(self.pin_buzzer)
+        self.buzzer.set_volume(self.volume_moyen)
+        self.buzzer.stop()
+        #Neopixel
+        self.pin_neopixel = 6
+        self.nombre_leds = 8
+        self.leds = Neopixel(self.nombre_leds, 0, self.pin_neopixel, "GRB")
+        #Telecommande IR
+        self.pin_telecommande = 7
+        self.Code_Touche_Haut   = 0x01
+        self.Code_Touche_Droite = 0x06
+        self.Code_Touche_Bas    = 0x09
+        self.Code_Touche_Gauche = 0x04
+        #Oled 128x32
+        self.oled_width = 128
+        self.oled_height = 32
+        self.oled_color = 0 #Oled basic, no color
+        self.pin_i2c_sda = 14
+        self.pin_i2c_scl = 15
+        self.i2c_num = 1
+        self.i2c_dev = I2C(self.i2c_num, scl=Pin(self.pin_i2c_scl), sda=Pin(self.pin_i2c_sda), freq=200000)
+        self.oled = SSD1306_I2C(128, 32, self.i2c_dev)
+        #Detecteurs de ligne
+        #***FAIRE DES FCTS POUR EXTRAIRE L INFO***TROP DIFFERENTS SELON LES ROBOTS
     
     # controle d'un moteur ou de plusieurs moteur
     # moteur : "droit, "gauche"
