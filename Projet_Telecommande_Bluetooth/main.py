@@ -128,9 +128,18 @@ class BLEDataChat:
 
         elif event == _IRQ_GATTC_NOTIFY:
             conn_handle, value_handle, notify_data = data
-            value = struct.unpack("<h", notify_data)[0]
-            self._log(f"Reçu: 0x{value:X}")
-
+            #value = struct.unpack("<h", notify_data)[0]
+            #self._log(f"Reçu: 0x{value:X}")
+            try:
+                text = data.decode('utf-8')
+                self._value = text
+                self._log("Reçu: " + text)
+                print("Reçu:", text)
+            except:
+                self._log("Donnée non textuelle")
+                value = struct.unpack("<h", notify_data)[0]
+                self._log(f"Reçu: 0x{value:X}")
+        
     def send_data(self):
         data = struct.pack("<h", self._data_to_send)
         self._ble.gatts_write(self._data_handle, data)
@@ -139,18 +148,34 @@ class BLEDataChat:
         for conn_handle in self._connections:
             self._ble.gatts_notify(conn_handle, self._data_handle)
 
+    def send_text(self, text):
+        data = text.encode("utf-8")
+        self._ble.gatts_write(self._data_handle, data)
+        
+        for conn_handle in self._connections:
+            self._ble.gatts_notify(conn_handle, self._data_handle)
+            
+        self._log("Emis: " + text)
+        print("Emis:", text)
+        
 # --- Programme principal ---
 def main():
     ble_chat = BLEDataChat()
     led = Pin('LED', Pin.OUT)
     counter = 0
-
+    '''
     while True:
         if counter % 10 == 0:
             ble_chat.send_data()
         led.toggle()
         time.sleep(1)
         counter += 1
-
+    '''
+    while True:
+        try:
+            text = input("Message à envoyer : ")
+            ble_chat.send_text(text)
+        except KeyboardInterrupt:
+            break
 if __name__ == "__main__":
     main()
