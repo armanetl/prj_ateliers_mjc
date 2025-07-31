@@ -1,0 +1,91 @@
+Propositions de Jeux avec :
+7 LEDs
+
+7 boutons
+
+1 buzzer
+
+1 capteur de mouvement PIR
+
+1. 🟡 La LED magique
+Une LED s’allume aléatoirement → l’enfant doit appuyer sur le bon bouton correspondant.
+
+Chaque bouton correspond à une LED.
+
+Si l’enfant appuie sur le bon bouton : bip de victoire + passage à la LED suivante.
+
+Mauvais bouton → buzzer « erreur ».
+
+Chrono ou score possible (par exemple : 10 bonnes réponses = victoire).
+
+2. ⏱️ Course contre la montre
+Appuie sur les LEDs qui s’allument avant qu’elles ne s’éteignent toutes seules.
+
+Une LED s’allume pendant 1 seconde.
+
+Si l’enfant appuie à temps, point gagné et LED suivante.
+
+Sinon, la LED s’éteint et on passe à la suivante.
+
+But : faire le meilleur score en 30 secondes.
+
+3. 🔔 Mémoire musicale
+Les LEDs s’allument avec des notes (buzzer) → il faut reproduire la séquence.
+
+Comme Simon, mais avec sons + lumières.
+
+Exemple : LED 0 = Do, LED 1 = Ré, LED 2 = Mi, etc.
+
+Une séquence est jouée → l’enfant doit la rejouer en appuyant sur les bons boutons.
+
+Buzzer de succès ou erreur.
+
+4. 👣 Jeu de ninja
+Ne pas se faire repérer !
+
+Le détecteur PIR doit rester éteint pendant que l’enfant appuie sur une séquence de boutons (par exemple 3 clignotements verts).
+
+Si un mouvement est détecté, buzzer d’alarme et LED rouge.
+
+Jeu d’adresse et de calme : idéal pour jouer « à l’espion ».
+
+5. 🎯 Tir au but
+Un point lumineux se déplace de LED en LED, il faut l’« attraper » au bon moment.
+
+Une LED court de gauche à droite.
+
+Quand elle atteint le milieu (ou LED 3), l’enfant doit appuyer.
+
+Trop tôt = erreur sonore, trop tard = erreur aussi.
+
+Bon moment = LED multicolore + son.
+
+6. 🎶 Piano LED
+Chaque bouton joue une note via le buzzer, comme un mini clavier.
+
+Utiliser les 7 boutons pour jouer les 7 notes de la gamme (Do à Si).
+
+Très simple, mais amusant → l’enfant peut inventer des mélodies.
+
+Possibilité de clignotement de la LED correspondante à chaque note.
+
+7. 🔢 Calcul-LED
+LEDs = chiffres de 1 à 7. Une opération simple est posée, il faut appuyer sur la LED qui donne le bon résultat.
+
+Ex. : 3 + 2 = ? → appuyer sur le bouton 5.
+
+Réponses aléatoires, sons d’erreur ou de succès.
+
+Option : chronomètre ou mode solo/duel.
+
+8. 👻 Anti-fantôme
+Le détecteur PIR déclenche une LED clignotante aléatoire (comme un fantôme) → il faut « l’attraper » en appuyant sur le bon bouton.
+
+LED clignote pendant 1 sec.
+
+Il faut vite appuyer sur le bon bouton.
+
+Trop lent → bruit d’erreur.
+
+Peut s’enchaîner très vite à haut niveau !
+
