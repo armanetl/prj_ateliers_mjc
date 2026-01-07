@@ -22,7 +22,7 @@ for item in LEDS:
 sleep(1)
 
 # --- Test des leds ---
-#Eteindre toutes les leds
+#Allumer toutes les leds
 for item in LEDS:
     item.value(1)
 sleep(1)
@@ -34,7 +34,7 @@ sleep(1)
 
 
 # --- Boucle principale ---
-led_jaune.value(1) #Test en cours...
+#led_jaune.value(1) #Test en cours...
 while True:
     #On lit le capteur
     DHT.measure()

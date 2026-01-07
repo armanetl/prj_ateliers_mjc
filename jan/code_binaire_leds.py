@@ -1,9 +1,7 @@
 from machine import Pin
 from time import sleep
 
-# Configuration des 4 LED sur les broches GPIO 0 à 3
-#led_pins = [Pin(i, Pin.OUT) for i in range(4)]
-# Configuration des 4 LED sur les broches GPIO 6 à 9
+# Configuration des 4 LED sur les broches GPIO 2 à 5
 led_pins = [Pin(i, Pin.OUT) for i in range(2, 6)]
 
 def afficher_valeur(valeur):

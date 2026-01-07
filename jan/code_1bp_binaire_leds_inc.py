@@ -4,7 +4,7 @@ import time
 # Declaration
 bouton = Pin(0, machine.Pin.IN, Pin.PULL_UP) 
 
-# Configuration des 4 LED sur les broches GPIO 6 à 9
+# Configuration des 4 LED sur les broches GPIO 2 à 5
 led_pins = [Pin(i, Pin.OUT) for i in range(2, 6)]
 
 # Variables
