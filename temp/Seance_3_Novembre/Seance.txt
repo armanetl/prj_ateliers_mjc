@@ -1,0 +1,17 @@
+Proposition pour Novembre: BP et Neopixel
+==========================
+Presentation du bouton (sans IRQ)
+Presentation du ruban Neopixel et des fonctions de sa classe
+Cablage de 2 boutons et un ruban neopixel (utilisation des 2 premieres leds)
+Tests unitaires des 2 composants (test_bp et test_neopixel)
+Jeu de reflexe a 2 joueurs (code à trous + correction)
+Pour les plus rapides, essayer le code sur les premiers modules de la base de Jeux
+
+Proposition pour Décembre: Structurer son programme avec des classes
+==========================
+- Ecrire des classes pour les leds, BPs et Neopixels 
+  La notion de classe est importante car elle permettra de "cacher" le code des composants complexes (Ecran TFT, MPU…)
+  Et surtout faire un main qui appelle les fonctions de ces classes donc qui sera beaucoup plus lisible !
+  On pourra aussi ajouter des fonctions auto_test dans chaque classe pour verifier que le composant est OK.
+- Faire un jeu de noel
+
